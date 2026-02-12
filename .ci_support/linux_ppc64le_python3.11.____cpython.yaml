@@ -47,7 +47,7 @@ libopencv:
 libpng:
 - '1.6'
 libprotobuf:
-- 6.31.1
+- 6.33.5
 libtiff:
 - '4.7'
 libwebp:
