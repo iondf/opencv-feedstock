@@ -22,102 +22,202 @@ jobs:
       max-parallel: 50
       matrix:
         include:
-          - CONFIG: linux_64_hdf51.14.6python3.10.____cpythonqt_version6
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_version6
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf51.14.6python3.10.____cpythonqt_versionnone
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_versionnone
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf51.14.6python3.11.____cpythonqt_version6
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.11.____cpythonqt_version6
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf51.14.6python3.11.____cpythonqt_versionnone
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.11.____cpythonqt_versionnone
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf51.14.6python3.12.____cpythonqt_version6
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.12.____cpythonqt_version6
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf51.14.6python3.12.____cpythonqt_versionnone
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.12.____cpythonqt_versionnone
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf51.14.6python3.13.____cp313qt_version6
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.13.____cp313qt_version6
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf51.14.6python3.13.____cp313qt_versionnone
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.13.____cp313qt_versionnone
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf51.14.6python3.14.____cp314qt_version6
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.14.____cp314qt_version6
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf51.14.6python3.14.____cp314qt_versionnone
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.14.____cp314qt_versionnone
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf52python3.10.____cpythonqt_version6
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.10.____cpythonqt_version6
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf52python3.10.____cpythonqt_versionnone
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.10.____cpythonqt_versionnone
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf52python3.11.____cpythonqt_version6
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.11.____cpythonqt_version6
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf52python3.11.____cpythonqt_versionnone
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.11.____cpythonqt_versionnone
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf52python3.12.____cpythonqt_version6
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.12.____cpythonqt_version6
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf52python3.12.____cpythonqt_versionnone
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.12.____cpythonqt_versionnone
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf52python3.13.____cp313qt_version6
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.13.____cp313qt_version6
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf52python3.13.____cp313qt_versionnone
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.13.____cp313qt_versionnone
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf52python3.14.____cp314qt_version6
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.14.____cp314qt_version6
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_hdf52python3.14.____cp314qt_versionnone
+          - CONFIG: linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.14.____cp314qt_versionnone
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_version6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_versionnone
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.11.____cpythonqt_version6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.11.____cpythonqt_versionnone
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.12.____cpythonqt_version6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.12.____cpythonqt_versionnone
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.13.____cp313qt_version6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.13.____cp313qt_versionnone
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.14.____cp314qt_version6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.14.____cp314qt_versionnone
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.10.____cpythonqt_version6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.10.____cpythonqt_versionnone
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.11.____cpythonqt_version6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.11.____cpythonqt_versionnone
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.12.____cpythonqt_version6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.12.____cpythonqt_versionnone
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.13.____cp313qt_version6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.13.____cp313qt_versionnone
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.14.____cp314qt_version6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['ubuntu-latest']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.14.____cp314qt_versionnone
             UPLOAD_PACKAGES: True
             os: ubuntu
             runs_on: ['ubuntu-latest']

@@ -63,17 +63,19 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.11.* *_cpython
+- 3.13.* *_cp313
 qt:
 - '5.15'
 qt6_main:
 - '6.10'
 qt_version:
-- none
+- '6'
 target_platform:
 - linux-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - libprotobuf
+  - libopenvino_dev
 zlib:
 - '1'
