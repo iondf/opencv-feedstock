@@ -25,7 +25,7 @@ flann:
 freetype:
 - '2'
 hdf5:
-- '2'
+- 1.14.6
 imath:
 - 3.2.2
 jasper:
@@ -45,11 +45,11 @@ liblapacke:
 libopencv:
 - 4.13.0
 libopenvino_dev:
-- 2026.0.0
+- 2025.4.1
 libpng:
 - '1.6'
 libprotobuf:
-- 6.33.5
+- 6.31.1
 libtiff:
 - '4.7'
 libwebp:
@@ -69,11 +69,13 @@ qt:
 qt6_main:
 - '6.10'
 qt_version:
-- '6'
+- none
 target_platform:
 - linux-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - libprotobuf
+  - libopenvino_dev
 zlib:
 - '1'

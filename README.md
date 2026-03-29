@@ -31,143 +31,283 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_hdf51.14.6python3.10.____cpythonqt_version6</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_version6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6python3.10.____cpythonqt_version6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_version6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf51.14.6python3.10.____cpythonqt_versionnone</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_versionnone</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6python3.10.____cpythonqt_versionnone" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_versionnone" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf51.14.6python3.11.____cpythonqt_version6</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.11.____cpythonqt_version6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6python3.11.____cpythonqt_version6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.11.____cpythonqt_version6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf51.14.6python3.11.____cpythonqt_versionnone</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.11.____cpythonqt_versionnone</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6python3.11.____cpythonqt_versionnone" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.11.____cpythonqt_versionnone" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf51.14.6python3.12.____cpythonqt_version6</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.12.____cpythonqt_version6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6python3.12.____cpythonqt_version6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.12.____cpythonqt_version6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf51.14.6python3.12.____cpythonqt_versionnone</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.12.____cpythonqt_versionnone</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6python3.12.____cpythonqt_versionnone" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.12.____cpythonqt_versionnone" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf51.14.6python3.13.____cp313qt_version6</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.13.____cp313qt_version6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6python3.13.____cp313qt_version6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.13.____cp313qt_version6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf51.14.6python3.13.____cp313qt_versionnone</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.13.____cp313qt_versionnone</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6python3.13.____cp313qt_versionnone" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.13.____cp313qt_versionnone" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf51.14.6python3.14.____cp314qt_version6</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.14.____cp314qt_version6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6python3.14.____cp314qt_version6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.14.____cp314qt_version6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf51.14.6python3.14.____cp314qt_versionnone</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.14.____cp314qt_versionnone</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6python3.14.____cp314qt_versionnone" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.14.____cp314qt_versionnone" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf52python3.10.____cpythonqt_version6</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.10.____cpythonqt_version6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52python3.10.____cpythonqt_version6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.10.____cpythonqt_version6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf52python3.10.____cpythonqt_versionnone</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.10.____cpythonqt_versionnone</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52python3.10.____cpythonqt_versionnone" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.10.____cpythonqt_versionnone" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf52python3.11.____cpythonqt_version6</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.11.____cpythonqt_version6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52python3.11.____cpythonqt_version6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.11.____cpythonqt_version6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf52python3.11.____cpythonqt_versionnone</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.11.____cpythonqt_versionnone</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52python3.11.____cpythonqt_versionnone" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.11.____cpythonqt_versionnone" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf52python3.12.____cpythonqt_version6</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.12.____cpythonqt_version6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52python3.12.____cpythonqt_version6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.12.____cpythonqt_version6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf52python3.12.____cpythonqt_versionnone</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.12.____cpythonqt_versionnone</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52python3.12.____cpythonqt_versionnone" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.12.____cpythonqt_versionnone" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf52python3.13.____cp313qt_version6</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.13.____cp313qt_version6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52python3.13.____cp313qt_version6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.13.____cp313qt_version6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf52python3.13.____cp313qt_versionnone</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.13.____cp313qt_versionnone</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52python3.13.____cp313qt_versionnone" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.13.____cp313qt_versionnone" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf52python3.14.____cp314qt_version6</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.14.____cp314qt_version6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52python3.14.____cp314qt_version6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.14.____cp314qt_version6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_hdf52python3.14.____cp314qt_versionnone</td>
+              <td>linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.14.____cp314qt_versionnone</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52python3.14.____cp314qt_versionnone" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf51.14.6libopenvino_dev2026.0.0libprotobuf6.33.5python3.14.____cp314qt_versionnone" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_version6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_version6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_versionnone</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_versionnone" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.11.____cpythonqt_version6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.11.____cpythonqt_version6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.11.____cpythonqt_versionnone</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.11.____cpythonqt_versionnone" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.12.____cpythonqt_version6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.12.____cpythonqt_version6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.12.____cpythonqt_versionnone</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.12.____cpythonqt_versionnone" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.13.____cp313qt_version6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.13.____cp313qt_version6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.13.____cp313qt_versionnone</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.13.____cp313qt_versionnone" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.14.____cp314qt_version6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.14.____cp314qt_version6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.14.____cp314qt_versionnone</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2025.4.1libprotobuf6.31.1python3.14.____cp314qt_versionnone" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.10.____cpythonqt_version6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.10.____cpythonqt_version6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.10.____cpythonqt_versionnone</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.10.____cpythonqt_versionnone" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.11.____cpythonqt_version6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.11.____cpythonqt_version6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.11.____cpythonqt_versionnone</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.11.____cpythonqt_versionnone" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.12.____cpythonqt_version6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.12.____cpythonqt_version6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.12.____cpythonqt_versionnone</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.12.____cpythonqt_versionnone" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.13.____cp313qt_version6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.13.____cp313qt_version6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.13.____cp313qt_versionnone</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.13.____cp313qt_versionnone" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.14.____cp314qt_version6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.14.____cp314qt_version6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.14.____cp314qt_versionnone</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4567&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opencv-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_hdf52libopenvino_dev2026.0.0libprotobuf6.33.5python3.14.____cp314qt_versionnone" alt="variant">
                 </a>
               </td>
             </tr><tr>
