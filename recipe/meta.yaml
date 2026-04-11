@@ -24,7 +24,7 @@
 {% set PY_VER_MAJOR = PY_VER.split('.')[0] %}
 {% set PY_VER_MINOR = PY_VER.split('.')[1] %}
 
-{% set build = 5 %}
+{% set build = 6 %}
 
 # Allow the qt version to be easily read from the build number 100's value.
 # This used to be more important when we supported both qt5 and qt6
@@ -188,6 +188,7 @@ outputs:
         - python
         # Similarly for libprotobuf since we are building a few different versions now
         - libprotobuf
+        - hdf5
       run:
         - {{ pin_subpackage('libopencv', exact=True) }}
         - {{ pin_subpackage('py-opencv', exact=True) }}
@@ -213,6 +214,7 @@ outputs:
         - numpy
         # Similarly for libprotobuf since we are building a few different versions now
         - libprotobuf
+        - hdf5
       run:
         - python
         - {{ pin_subpackage('libopencv', exact=True) }}
