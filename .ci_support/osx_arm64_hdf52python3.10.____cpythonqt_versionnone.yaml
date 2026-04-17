@@ -71,7 +71,7 @@ python:
 qt:
 - '5.15'
 qt6_main:
-- '6.10'
+- '6.11'
 qt_version:
 - none
 target_platform:
