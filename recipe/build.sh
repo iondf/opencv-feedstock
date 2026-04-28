@@ -79,6 +79,20 @@ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$PREFIX/lib/pkgconfig
 mkdir -p build
 cd build
 
+dump_cmake_logs() {
+    status=$?
+    if [[ $status -ne 0 ]]; then
+        for log in CMakeFiles/CMakeError.log CMakeFiles/CMakeOutput.log CMakeCache.txt; do
+            if [[ -f "$log" ]]; then
+                echo "===== ${log} ====="
+                sed -n '1,240p' "$log"
+            fi
+        done
+    fi
+    exit $status
+}
+trap dump_cmake_logs EXIT
+
 # Features that are disabled
 # WITH_OBSENSOR
 # Orbbec seems to be tricky requiring lots of firmware and software to run on OSX
@@ -197,3 +211,4 @@ cmake -LAH -G "Ninja"                                                     \
     ..
 
 ninja install -j${CPU_COUNT}
+trap - EXIT

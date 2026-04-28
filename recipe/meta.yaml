@@ -179,7 +179,8 @@ test:
     {% endif %}
     - OPENCV_FLAGS="`pkg-config --cflags opencv4`"                            # [unix]
     - OPENCV_LIBS="`pkg-config --libs opencv4`"                               # [unix]
-    - $CXX -std=c++11 $RECIPE_DIR/test.cpp ${OPENCV_FLAGS} ${OPENCV_LIBS} -o test  # [unix]
+    - $CXX -std=c++11 $RECIPE_DIR/test.cpp ${OPENCV_FLAGS} ${OPENCV_LIBS} -Wl,-rpath,$PREFIX/lib -o test  # [osx]
+    - $CXX -std=c++11 $RECIPE_DIR/test.cpp ${OPENCV_FLAGS} ${OPENCV_LIBS} -o test  # [unix and not osx]
     - if [[ $(./test) != $PKG_VERSION ]]; then exit 1 ; fi                    # [unix]
     {% for each_opencv_lib in opencv_libs %}
     - echo Testing for presence of {{ each_opencv_lib }}

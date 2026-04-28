@@ -57,10 +57,21 @@ jobs:
       UPLOAD_PACKAGES: "False"
       IS_PR_BUILD: "True"
       CI: github_actions
-      CONDA_BLD_PATH: ${{ github.workspace }}/build_artifacts
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Configure short build paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ matrix.kind }}" = "windows" ]; then
+            echo "CONDA_BLD_PATH=C:\\b" >> "${GITHUB_ENV}"
+            echo "MINIFORGE_HOME=C:\\mf" >> "${GITHUB_ENV}"
+            echo "EXTRA_CB_OPTIONS=--no-long-test-prefix --prefix-length 80" >> "${GITHUB_ENV}"
+          else
+            echo "CONDA_BLD_PATH=/tmp/cb" >> "${GITHUB_ENV}"
+          fi
 
       - name: Resolve prefix channel
         id: channel
@@ -131,7 +142,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: conda-${{ matrix.target_platform }}
-          path: build_artifacts/${{ matrix.target_platform }}/*
+          path: |
+            /tmp/cb/${{ matrix.target_platform }}/*
+            C:\b\${{ matrix.target_platform }}\*
 
       - name: Setup micromamba
         uses: mamba-org/setup-micromamba@v2
@@ -145,9 +158,9 @@ jobs:
         run: |
           set -euo pipefail
           shopt -s nullglob
-          files=(build_artifacts/${{ matrix.target_platform }}/*.conda build_artifacts/${{ matrix.target_platform }}/*.tar.bz2)
+          files=(/tmp/cb/${{ matrix.target_platform }}/*.conda /tmp/cb/${{ matrix.target_platform }}/*.tar.bz2 /c/b/${{ matrix.target_platform }}/*.conda /c/b/${{ matrix.target_platform }}/*.tar.bz2)
           if [ ${#files[@]} -eq 0 ]; then
-            echo "No packages found in build_artifacts/${{ matrix.target_platform }}"
+            echo "No packages found for ${{ matrix.target_platform }}"
             exit 1
           fi
           for pkg in "${files[@]}"; do
