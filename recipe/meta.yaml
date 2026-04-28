@@ -167,7 +167,7 @@ test:
     # single line jinja.
     {% set opencv_libs = ["alphamat", "aruco", "bgsegm", "calib3d", "ccalib", "core", "datasets", "dnn", "dnn_objdetect", "dnn_superres", "dpm", "face", "features2d", "flann", "freetype", "fuzzy", "gapi", "hfs", "highgui", "img_hash", "imgcodecs", "imgproc", "intensity_transform", "line_descriptor", "mcc", "ml", "objdetect", "optflow", "phase_unwrapping", "photo", "plot", "quality", "rapid", "reg", "rgbd", "saliency", "shape", "stereo", "stitching", "structured_light", "superres", "surface_matching", "text", "tracking", "video", "videoio", "videostab", "wechat_qrcode", "xfeatures2d", "ximgproc", "xobjdetect", "xphoto"] %}
     {% if cuda_enabled %}
-    {% set opencv_libs = opencv_libs + ["cudaarithm", "cudabgsegm", "cudafeatures2d", "cudafilters", "cudaimgproc", "cudaobjdetect", "cudaoptflow", "cudastereo", "cudawarping", "cudev"] %}
+    {% set opencv_libs = opencv_libs + ["cudaarithm", "cudabgsegm", "cudafeatures2d", "cudafilters", "cudaimgproc", "cudaobjdetect", "cudaoptflow", "cudastereo", "cudawarping"] %}
     {% endif %}
     - export MACOSX_DEPLOYMENT_TARGET={{ MACOSX_DEPLOYMENT_TARGET }}          # [osx]
     # hmaarrfk - 2024/10
@@ -197,6 +197,7 @@ test:
     - test -f $PREFIX/include/opencv4/opencv2/cudafeatures2d.hpp  # [linux]
     - printf '#include <opencv2/cudafeatures2d.hpp>\nint main(){ auto orb = cv::cuda::ORB::create(); return orb.empty(); }\n' > test_cuda_features.cpp  # [linux]
     - $CXX -std=c++17 test_cuda_features.cpp ${OPENCV_FLAGS} ${OPENCV_LIBS} -o test_cuda_features  # [linux]
+    - if not exist %PREFIX%\Library\include\opencv2\cudafeatures2d.hpp exit 1  # [win]
     {% endif %}
 
 outputs:

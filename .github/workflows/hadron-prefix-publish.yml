@@ -19,9 +19,35 @@ permissions:
 
 jobs:
   build-and-publish:
-    name: opencv-cuda-linux-64
-    runs-on: ubuntu-24.04
+    name: opencv-${{ matrix.target_platform }}
+    runs-on: ${{ matrix.runner }}
     timeout-minutes: 720
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            target_platform: linux-64
+            config: linux_64_hadron_cuda129python3.13qt_version6
+            kind: linux
+          - runner: windows-latest
+            target_platform: win-64
+            config: win_64_hadron_cuda129python3.13qt_version6
+            kind: windows
+          - runner: macos-15-intel
+            target_platform: osx-64
+            config: osx_64_hadron_coremlpython3.13qt_version6
+            kind: osx
+          - runner: macos-15
+            target_platform: osx-arm64
+            config: osx_arm64_hadron_coremlpython3.13qt_version6
+            kind: osx
+    env:
+      CONFIG: ${{ matrix.config }}
+      UPLOAD_PACKAGES: "False"
+      IS_PR_BUILD: "True"
+      CI: github_actions
+      CONDA_BLD_PATH: ${{ github.workspace }}/build_artifacts
 
     steps:
       - uses: actions/checkout@v4
@@ -43,14 +69,6 @@ jobs:
           fi
           echo "channel=${channel}" >> "${GITHUB_OUTPUT}"
           echo "Publishing to prefix.dev/${channel}"
-
-      - name: Resolve build args
-        id: build_args
-        shell: bash
-        run: |
-          set -euo pipefail
-          args="--no-anaconda-upload --output-folder output --package-format 2 -m recipe/conda_build_config_cuda.yaml -c https://prefix.dev/hadron -c conda-forge"
-          echo "args=${args}" >> "${GITHUB_OUTPUT}"
 
       - name: Override recipe build number
         if: ${{ github.event.inputs.build_num != '' }}
@@ -80,35 +98,46 @@ jobs:
           mv recipe/meta.yaml.tmp recipe/meta.yaml
           grep -n "set build" recipe/meta.yaml
 
-      - name: Setup micromamba
-        uses: mamba-org/setup-micromamba@v2
-        with:
-          init-shell: bash
-          environment-name: build
-          create-args: >-
-            conda-build
-            rattler-build
-
       - name: Build conda package
-        shell: bash -el {0}
+        if: matrix.kind == 'linux'
+        shell: bash
         run: |
           set -euo pipefail
-          conda build recipe ${{ steps.build_args.outputs.args }}
+          .scripts/run_docker_build.sh
+
+      - name: Build conda package
+        if: matrix.kind == 'osx'
+        shell: bash
+        run: |
+          set -euo pipefail
+          .scripts/run_osx_build.sh
+
+      - name: Build conda package
+        if: matrix.kind == 'windows'
+        shell: cmd
+        run: .scripts\run_win_build.bat
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: conda-linux-64-cuda
-          path: output/linux-64/*
+          name: conda-${{ matrix.target_platform }}
+          path: build_artifacts/${{ matrix.target_platform }}/*
+
+      - name: Setup micromamba
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          init-shell: bash
+          environment-name: publish
+          create-args: rattler-build
 
       - name: Upload package to prefix.dev
         shell: bash -el {0}
         run: |
           set -euo pipefail
           shopt -s nullglob
-          files=(output/linux-64/*.conda output/linux-64/*.tar.bz2)
+          files=(build_artifacts/${{ matrix.target_platform }}/*.conda build_artifacts/${{ matrix.target_platform }}/*.tar.bz2)
           if [ ${#files[@]} -eq 0 ]; then
-            echo "No packages found in output/linux-64"
+            echo "No packages found in build_artifacts/${{ matrix.target_platform }}"
             exit 1
           fi
           for pkg in "${files[@]}"; do

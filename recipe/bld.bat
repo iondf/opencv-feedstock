@@ -31,6 +31,17 @@ set UNIX_LIBRARY_LIB=%LIBRARY_LIB:\=/%
 set UNIX_SP_DIR=%SP_DIR:\=/%
 set UNIX_SRC_DIR=%SRC_DIR:\=/%
 
+set CUDA=0
+set CUBLAS=0
+set CUDA_EXTRA_ARGS=
+if defined cuda_version (
+    if not "%cuda_version%"=="None" (
+        set CUDA=1
+        set CUBLAS=1
+        set CUDA_EXTRA_ARGS=-DCUDA_ARCH_BIN=75;86;89 -DCUDA_ARCH_PTX= -DCUDA_TOOLKIT_ROOT_DIR=%UNIX_LIBRARY_PREFIX% -DOPENCV_DNN_CUDA=OFF
+    )
+)
+
 :: FFMPEG building requires pkgconfig
 set PKG_CONFIG_PATH=%UNIX_LIBRARY_PREFIX%/lib/pkgconfig
 
@@ -83,7 +94,11 @@ cmake -LAH -G "Ninja"                                                           
     -DBUILD_JPEG=0                                                                  ^
     -DBUILD_WEBP=0                                                                  ^
     -DWITH_WEBP=1                                                                   ^
-    -DWITH_CUDA=0                                                                   ^
+    -DWITH_CUDA=%CUDA%                                                              ^
+    -DWITH_CUBLAS=%CUBLAS%                                                          ^
+    -DWITH_CUFFT=%CUDA%                                                             ^
+    -DWITH_NVCUVID=0                                                                ^
+    %CUDA_EXTRA_ARGS%                                                               ^
     -DWITH_OPENCL=0                                                                 ^
     -DWITH_OPENCLAMDFFT=0                                                           ^
     -DWITH_OPENCLAMDBLAS=0                                                          ^
@@ -101,6 +116,17 @@ cmake -LAH -G "Ninja"                                                           
     -DWITH_VTK=0                                                                    ^
     -DWITH_WIN32UI=0                                                                ^
     %WITH_QT%                                                                       ^
+    -DBUILD_opencv_cudacodec=0                                                      ^
+    -DBUILD_opencv_cudev=%CUDA%                                                     ^
+    -DBUILD_opencv_cudaarithm=%CUDA%                                                ^
+    -DBUILD_opencv_cudabgsegm=%CUDA%                                                ^
+    -DBUILD_opencv_cudafeatures2d=%CUDA%                                            ^
+    -DBUILD_opencv_cudafilters=%CUDA%                                               ^
+    -DBUILD_opencv_cudaimgproc=%CUDA%                                               ^
+    -DBUILD_opencv_cudaobjdetect=%CUDA%                                             ^
+    -DBUILD_opencv_cudaoptflow=%CUDA%                                               ^
+    -DBUILD_opencv_cudastereo=%CUDA%                                                ^
+    -DBUILD_opencv_cudawarping=%CUDA%                                               ^
     -DINSTALL_C_EXAMPLES=0                                                          ^
     -DOPENCV_EXTRA_MODULES_PATH=%UNIX_SRC_DIR%/opencv_contrib/modules               ^
     -DPYTHON_EXECUTABLE=""                                                          ^
