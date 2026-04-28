@@ -103,8 +103,10 @@ jobs:
             echo "CONDA_BLD_PATH=C:\\b" >> "${GITHUB_ENV}"
             echo "MINIFORGE_HOME=C:\\mf" >> "${GITHUB_ENV}"
             echo "EXTRA_CB_OPTIONS=--no-long-test-prefix --prefix-length 80" >> "${GITHUB_ENV}"
+            echo "CONDA_ARTIFACT_GLOB=C:\\b\\${{ matrix.target_platform }}\\*" >> "${GITHUB_ENV}"
           else
             echo "CONDA_BLD_PATH=/tmp/cb" >> "${GITHUB_ENV}"
+            echo "CONDA_ARTIFACT_GLOB=/tmp/cb/${{ matrix.target_platform }}/*" >> "${GITHUB_ENV}"
           fi
 
       - name: Resolve prefix channel
@@ -210,9 +212,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: conda-${{ matrix.target_platform }}
-          path: |
-            /tmp/cb/${{ matrix.target_platform }}/*
-            C:\b\${{ matrix.target_platform }}\*
+          path: ${{ env.CONDA_ARTIFACT_GLOB }}
 
       - name: Setup micromamba
         uses: mamba-org/setup-micromamba@v2
