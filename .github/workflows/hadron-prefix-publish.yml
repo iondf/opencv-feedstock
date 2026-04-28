@@ -1,6 +1,16 @@
 name: Hadron Prefix Publish
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/hadron-prefix-publish.yml"
+      - ".ci_support/linux_64_hadron_cuda129python3.13qt_version6.yaml"
+      - ".ci_support/win_64_hadron_cuda129python3.13qt_version6.yaml"
+      - ".ci_support/osx_64_hadron_coremlpython3.13qt_version6.yaml"
+      - ".ci_support/osx_arm64_hadron_coremlpython3.13qt_version6.yaml"
+      - "recipe/**"
   workflow_dispatch:
     inputs:
       channel:
