@@ -39,7 +39,9 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://github.com/opencv/opencv/archive/{{ version }}.tar.gz
+  - url:
+      - https://github.com/opencv/opencv/archive/{{ version }}.tar.gz
+      - https://codeload.github.com/opencv/opencv/tar.gz/refs/tags/{{ version }}
     fn: opencv-{{ version }}.tar.gz
     sha256: 1d40ca017ea51c533cf9fd5cbde5b5fe7ae248291ddf2af99d4c17cf8e13017d
     patches:
@@ -52,7 +54,9 @@ source:
       - patches_opencv/28345-fix-vsx-utils-syntax-error.patch
       # https://github.com/opencv/opencv/pull/28592
       - patches_opencv/28592-Fix-OpenVINO-2026.patch
-  - url: https://github.com/opencv/opencv_contrib/archive/{{ version }}.tar.gz
+  - url:
+      - https://github.com/opencv/opencv_contrib/archive/{{ version }}.tar.gz
+      - https://codeload.github.com/opencv/opencv_contrib/tar.gz/refs/tags/{{ version }}
     fn: opencv_contrib-{{ version }}.tar.gz
     sha256: 1e0077a4fd2960a7d2f4c9e49d6ba7bb891cac2d1be36d7e8e47aa97a9d1039b
     folder: opencv_contrib
@@ -60,7 +64,9 @@ source:
       # Allow attempt to find HDF5 on cross-compile
       - patches_opencv_contrib/cmake_hdf5_xpile.patch
   - fn: test.avi
-    url: https://raw.githubusercontent.com/opencv/opencv_extra/master/testdata/highgui/video/VID00003-20100701-2204.avi
+    url:
+      - https://raw.githubusercontent.com/opencv/opencv_extra/master/testdata/highgui/video/VID00003-20100701-2204.avi
+      - https://github.com/opencv/opencv_extra/raw/master/testdata/highgui/video/VID00003-20100701-2204.avi
     sha256: 78884f64b564a3b06dc6ee731ed33b60c6d8cd864cea07f21d94ba0f90c7b310
 
 build:
@@ -102,7 +108,7 @@ requirements:
     - cuda-version {{ cuda_version }}.*
     - cuda-nvcc
     - cuda-cudart-dev
-    - cuda-driver-dev                  # [linux]
+    - cuda-driver-dev_linux-64         # [linux64]
     - libcublas-dev
     - libcufft-dev
     - libcurand-dev
@@ -149,6 +155,10 @@ requirements:
 
 test:
   requires:
+    {% if cuda_enabled %}
+    - cuda-version {{ cuda_version }}.*
+    - cuda-nvcc
+    {% endif %}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - pkg-config                      # [not win]

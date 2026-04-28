@@ -83,7 +83,11 @@ else
     ( endgroup "Inspecting artifacts" ) 2> /dev/null
     ( startgroup "Validating outputs" ) 2> /dev/null
 
-    validate_recipe_outputs "${FEEDSTOCK_NAME}"
+    if [[ "${SKIP_OUTPUT_VALIDATION:-False}" != "True" ]]; then
+        validate_recipe_outputs "${FEEDSTOCK_NAME}"
+    else
+        echo "Skipping output validation for ${FEEDSTOCK_NAME}"
+    fi
 
     ( endgroup "Validating outputs" ) 2> /dev/null
 

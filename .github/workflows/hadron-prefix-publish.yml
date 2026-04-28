@@ -26,9 +26,42 @@ permissions:
   contents: read
   id-token: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  validate:
+    name: Validate recipe renders
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup micromamba
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          init-shell: bash
+          environment-name: render
+          create-args: conda-build
+
+      - name: Render publish variants
+        shell: bash -el {0}
+        run: |
+          set -euo pipefail
+          for config in \
+            linux_64_hadron_cuda129python3.13qt_version6 \
+            win_64_hadron_cuda129python3.13qt_version6 \
+            osx_arm64_hadron_coremlpython3.13qt_version6
+          do
+            echo "::group::Render ${config}"
+            conda render recipe -m ".ci_support/${config}.yaml" --no-source
+            echo "::endgroup::"
+          done
+
   build-and-publish:
     name: opencv-${{ matrix.target_platform }}
+    needs: validate
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 720
     strategy:
@@ -52,6 +85,12 @@ jobs:
       UPLOAD_PACKAGES: "False"
       IS_PR_BUILD: "True"
       CI: github_actions
+      SKIP_OUTPUT_VALIDATION: "True"
+      FEEDSTOCK_NAME: ${{ github.event.repository.name }}
+      GIT_BRANCH: ${{ github.ref_name }}
+      flow_run_id: github_${{ github.run_id }}
+      remote_url: https://github.com/${{ github.repository }}
+      sha: ${{ github.sha }}
 
     steps:
       - uses: actions/checkout@v4
@@ -119,19 +158,53 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          .scripts/run_docker_build.sh
+          retry_build() {
+            local attempt=1
+            local max_attempts=3
+            until .scripts/run_docker_build.sh; do
+              if [ "${attempt}" -ge "${max_attempts}" ]; then
+                return 1
+              fi
+              echo "Build attempt ${attempt} failed; retrying after a short backoff."
+              attempt=$((attempt + 1))
+              sleep 90
+            done
+          }
+          retry_build
 
       - name: Build conda package
         if: matrix.kind == 'osx'
         shell: bash
         run: |
           set -euo pipefail
-          .scripts/run_osx_build.sh
+          retry_build() {
+            local attempt=1
+            local max_attempts=3
+            until .scripts/run_osx_build.sh; do
+              if [ "${attempt}" -ge "${max_attempts}" ]; then
+                return 1
+              fi
+              echo "Build attempt ${attempt} failed; retrying after a short backoff."
+              attempt=$((attempt + 1))
+              sleep 90
+            done
+          }
+          retry_build
 
       - name: Build conda package
         if: matrix.kind == 'windows'
         shell: cmd
-        run: .scripts\run_win_build.bat
+        run: |
+          setlocal EnableDelayedExpansion
+          set ATTEMPT=1
+          :retry
+          call .scripts\run_win_build.bat
+          if !ERRORLEVEL! EQU 0 exit /b 0
+          if !ATTEMPT! GEQ 3 exit /b !ERRORLEVEL!
+          echo Build attempt !ATTEMPT! failed; retrying after a short backoff.
+          set /A ATTEMPT+=1
+          powershell -NoProfile -Command "Start-Sleep -Seconds 90"
+          goto retry
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4

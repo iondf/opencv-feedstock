@@ -19,6 +19,13 @@ if [[ "${target_platform}" == "linux-64" && -n "${cuda_version:-}" && "${cuda_ve
     CUBLAS="1"
     # The GitHub-hosted runner will not have a GPU, so build SASS for common
     # NVIDIA cards and skip runtime GPU tests in the recipe.
+    CUDA_SYSROOT="${CONDA_BUILD_SYSROOT:-${PREFIX}/x86_64-conda-linux-gnu/sysroot}"
+    export LDFLAGS="${LDFLAGS} -Wl,--sysroot=${CUDA_SYSROOT}"
+    export LDFLAGS_LD="${LDFLAGS_LD:-} --sysroot=${CUDA_SYSROOT}"
+    CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_SYSROOT=${CUDA_SYSROOT}"
+    # Static cudart pulls glibc linker scripts with absolute /usr/lib64 paths.
+    CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_USE_STATIC_CUDA_RUNTIME=OFF"
+    CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_CUDA_RUNTIME_LIBRARY=Shared"
     CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_ARCH_BIN=75\;86\;89"
     CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_ARCH_PTX="
     CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_TOOLKIT_ROOT_DIR=${PREFIX}"

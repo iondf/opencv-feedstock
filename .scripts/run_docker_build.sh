@@ -111,6 +111,7 @@ ${DOCKER_EXECUTABLE} run ${DOCKER_RUN_ARGS} \
            -e HOST_USER_ID \
            -e UPLOAD_PACKAGES \
            -e IS_PR_BUILD \
+           -e SKIP_OUTPUT_VALIDATION \
            -e GIT_BRANCH \
            -e UPLOAD_ON_BRANCH \
            -e CI \

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
     timeout-minutes: 360
     strategy:
       fail-fast: false
-      max-parallel: 50
+      max-parallel: 20
       matrix:
         include:
           - CONFIG: linux_64_hdf51.14.6libopenvino_dev2025.4.1libprotobuf6.31.1python3.10.____cpythonqt_version6
@@ -404,7 +404,19 @@ jobs:
           export IS_PR_BUILD="False"
         fi
         echo "::endgroup::"
-        ./.scripts/run_docker_build.sh
+        retry_build() {
+          local attempt=1
+          local max_attempts=3
+          until ./.scripts/run_docker_build.sh; do
+            if [[ "${attempt}" -ge "${max_attempts}" ]]; then
+              return 1
+            fi
+            echo "Build attempt ${attempt} failed; retrying after a short backoff."
+            attempt=$((attempt + 1))
+            sleep 90
+          done
+        }
+        retry_build
 
     - name: Build on macOS
       id: build-macos
