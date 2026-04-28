@@ -23,6 +23,8 @@ if [[ "${target_platform}" == "linux-64" && -n "${cuda_version:-}" && "${cuda_ve
     CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_ARCH_PTX="
     CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_TOOLKIT_ROOT_DIR=${PREFIX}"
     CMAKE_ARGS="${CMAKE_ARGS} -DOPENCV_DNN_CUDA=OFF"
+    CMAKE_ARGS="${CMAKE_ARGS} -DENABLE_CUDA_FIRST_CLASS_LANGUAGE=ON"
+    CMAKE_ARGS="${CMAKE_ARGS} -DWITH_CUDNN=OFF"
 fi
 
 if [[ "${target_platform}" == osx-* ]]; then
@@ -121,6 +123,9 @@ cmake -LAH -G "Ninja"                                                     \
     -DBUILD_TESTS=0                                                       \
     -DBUILD_DOCS=0                                                        \
     -DBUILD_PERF_TESTS=0                                                  \
+    -DBUILD_JAVA=0                                                        \
+    -DBUILD_opencv_java=0                                                 \
+    -DBUILD_opencv_java_bindings_generator=0                              \
     -DBUILD_ZLIB=0                                                        \
     -DBUILD_TIFF=0                                                        \
     -DBUILD_PNG=0                                                         \
@@ -142,6 +147,7 @@ cmake -LAH -G "Ninja"                                                     \
     -DWITH_CUBLAS=$CUBLAS                                                 \
     -DWITH_CUFFT=$CUDA                                                    \
     -DWITH_NVCUVID=0                                                      \
+    -DWITH_NVCUVENC=0                                                     \
     -DWITH_COREML=$COREML                                                 \
     -DWITH_OPENCL=0                                                       \
     -DWITH_OPENCLAMDFFT=0                                                 \

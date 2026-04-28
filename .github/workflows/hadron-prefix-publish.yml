@@ -8,7 +8,6 @@ on:
       - ".github/workflows/hadron-prefix-publish.yml"
       - ".ci_support/linux_64_hadron_cuda129python3.13qt_version6.yaml"
       - ".ci_support/win_64_hadron_cuda129python3.13qt_version6.yaml"
-      - ".ci_support/osx_64_hadron_coremlpython3.13qt_version6.yaml"
       - ".ci_support/osx_arm64_hadron_coremlpython3.13qt_version6.yaml"
       - "recipe/**"
   workflow_dispatch:
@@ -44,10 +43,6 @@ jobs:
             target_platform: win-64
             config: win_64_hadron_cuda129python3.13qt_version6
             kind: windows
-          - runner: macos-15-intel
-            target_platform: osx-64
-            config: osx_64_hadron_coremlpython3.13qt_version6
-            kind: osx
           - runner: macos-15
             target_platform: osx-arm64
             config: osx_arm64_hadron_coremlpython3.13qt_version6

@@ -102,6 +102,7 @@ requirements:
     - cuda-version {{ cuda_version }}.*
     - cuda-nvcc
     - cuda-cudart-dev
+    - cuda-driver-dev                  # [linux]
     - libcublas-dev
     - libcufft-dev
     - libcurand-dev

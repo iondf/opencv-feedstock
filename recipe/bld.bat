@@ -38,7 +38,7 @@ if defined cuda_version (
     if not "%cuda_version%"=="None" (
         set CUDA=1
         set CUBLAS=1
-        set CUDA_EXTRA_ARGS=-DCUDA_ARCH_BIN=75;86;89 -DCUDA_ARCH_PTX= -DCUDA_TOOLKIT_ROOT_DIR=%UNIX_LIBRARY_PREFIX% -DOPENCV_DNN_CUDA=OFF
+        set CUDA_EXTRA_ARGS=-DCUDA_ARCH_BIN=75;86;89 -DCUDA_ARCH_PTX= -DCUDA_TOOLKIT_ROOT_DIR=%UNIX_LIBRARY_PREFIX% -DOPENCV_DNN_CUDA=OFF -DENABLE_CUDA_FIRST_CLASS_LANGUAGE=ON -DWITH_CUDNN=OFF
     )
 )
 
@@ -77,6 +77,9 @@ cmake -LAH -G "Ninja"                                                           
     -DBUILD_TESTS=0                                                                 ^
     -DBUILD_DOCS=0                                                                  ^
     -DBUILD_PERF_TESTS=0                                                            ^
+    -DBUILD_JAVA=0                                                                  ^
+    -DBUILD_opencv_java=0                                                           ^
+    -DBUILD_opencv_java_bindings_generator=0                                        ^
     -DBUILD_ZLIB=0                                                                  ^
     -DBUILD_opencv_bioinspired=0                                                    ^
     -DBUILD_TIFF=0                                                                  ^
@@ -98,6 +101,7 @@ cmake -LAH -G "Ninja"                                                           
     -DWITH_CUBLAS=%CUBLAS%                                                          ^
     -DWITH_CUFFT=%CUDA%                                                             ^
     -DWITH_NVCUVID=0                                                                ^
+    -DWITH_NVCUVENC=0                                                               ^
     %CUDA_EXTRA_ARGS%                                                               ^
     -DWITH_OPENCL=0                                                                 ^
     -DWITH_OPENCLAMDFFT=0                                                           ^
@@ -159,7 +163,12 @@ cmake -LAH -G "Ninja"                                                           
     -DOPENCV_PYTHON_PIP_METADATA_INSTALL=ON                                         ^
     -DOPENCV_PYTHON_PIP_METADATA_INSTALLER:STRING="conda"                           ^
     ..
-if %ERRORLEVEL% neq 0 (type CMakeError.log && exit 1)
+if %ERRORLEVEL% neq 0 (
+    if exist CMakeFiles\CMakeError.log type CMakeFiles\CMakeError.log
+    if exist CMakeFiles\CMakeOutput.log type CMakeFiles\CMakeOutput.log
+    if exist CMakeCache.txt type CMakeCache.txt
+    exit /b 1
+)
 
 cmake --build . --target install --config Release
-if %ERRORLEVEL% neq 0 exit 1
+if %ERRORLEVEL% neq 0 exit /b 1
