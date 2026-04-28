@@ -23,6 +23,8 @@
 {% set major_version = version.split('.')[0] %}
 {% set PY_VER_MAJOR = PY_VER.split('.')[0] %}
 {% set PY_VER_MINOR = PY_VER.split('.')[1] %}
+{% set cuda_version = cuda_version|default("None") %}
+{% set cuda_enabled = cuda_version != "None" %}
 
 {% set build = 7 %}
 
@@ -63,8 +65,13 @@ source:
 
 build:
   number: {{ build }}
+  {% if cuda_enabled %}
+  string: headless_cuda{{ cuda_version|replace('.', '') }}_py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [qt_version == "none"]
+  string: qt{{ qt_version }}_cuda{{ cuda_version|replace('.', '') }}_py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [qt_version != "none"]
+  {% else %}
   string: headless_py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [qt_version == "none"]
   string: qt{{ qt_version }}_py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [qt_version != "none"]
+  {% endif %}
   run_exports:
     # https://abi-laboratory.pro/index.php?view=timeline&l=opencv
     # Things seem to change every patch versions, mostly the dnn module
@@ -91,6 +98,15 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+    {% if cuda_enabled %}
+    - cuda-version {{ cuda_version }}.*
+    - cuda-nvcc
+    - cuda-cudart-dev
+    - libcublas-dev
+    - libcufft-dev
+    - libcurand-dev
+    - libnpp-dev
+    {% endif %}
     - libgl-devel                        # [linux and (qt_version == 5 or qt_version == 6)]
     - libegl-devel                       # [linux and (qt_version == 5 or qt_version == 6)]
     - python
@@ -150,6 +166,9 @@ test:
     # The bot doesn't support multiline jinja, so use
     # single line jinja.
     {% set opencv_libs = ["alphamat", "aruco", "bgsegm", "calib3d", "ccalib", "core", "datasets", "dnn", "dnn_objdetect", "dnn_superres", "dpm", "face", "features2d", "flann", "freetype", "fuzzy", "gapi", "hfs", "highgui", "img_hash", "imgcodecs", "imgproc", "intensity_transform", "line_descriptor", "mcc", "ml", "objdetect", "optflow", "phase_unwrapping", "photo", "plot", "quality", "rapid", "reg", "rgbd", "saliency", "shape", "stereo", "stitching", "structured_light", "superres", "surface_matching", "text", "tracking", "video", "videoio", "videostab", "wechat_qrcode", "xfeatures2d", "ximgproc", "xobjdetect", "xphoto"] %}
+    {% if cuda_enabled %}
+    {% set opencv_libs = opencv_libs + ["cudaarithm", "cudabgsegm", "cudafeatures2d", "cudafilters", "cudaimgproc", "cudaobjdetect", "cudaoptflow", "cudastereo", "cudawarping", "cudev"] %}
+    {% endif %}
     - export MACOSX_DEPLOYMENT_TARGET={{ MACOSX_DEPLOYMENT_TARGET }}          # [osx]
     # hmaarrfk - 2024/10
     # Need to specify a default value for CONDA_BUILD_SYSROOT
@@ -159,7 +178,8 @@ test:
     - export CONDA_BUILD_SYSROOT={{ CONDA_BUILD_SYSROOT }}      # [osx]
     {% endif %}
     - OPENCV_FLAGS="`pkg-config --cflags opencv4`"                            # [unix]
-    - $CXX -std=c++11 $RECIPE_DIR/test.cpp ${OPENCV_FLAGS} -o test            # [unix]
+    - OPENCV_LIBS="`pkg-config --libs opencv4`"                               # [unix]
+    - $CXX -std=c++11 $RECIPE_DIR/test.cpp ${OPENCV_FLAGS} ${OPENCV_LIBS} -o test  # [unix]
     - if [[ $(./test) != $PKG_VERSION ]]; then exit 1 ; fi                    # [unix]
     {% for each_opencv_lib in opencv_libs %}
     - echo Testing for presence of {{ each_opencv_lib }}
@@ -173,13 +193,23 @@ test:
     - cmake -G "Ninja" ..
     - cmake --build . --config Release
     - popd
+    {% if cuda_enabled %}
+    - test -f $PREFIX/include/opencv4/opencv2/cudafeatures2d.hpp  # [linux]
+    - printf '#include <opencv2/cudafeatures2d.hpp>\nint main(){ auto orb = cv::cuda::ORB::create(); return orb.empty(); }\n' > test_cuda_features.cpp  # [linux]
+    - $CXX -std=c++17 test_cuda_features.cpp ${OPENCV_FLAGS} ${OPENCV_LIBS} -o test_cuda_features  # [linux]
+    {% endif %}
 
 outputs:
   - name: libopencv
   - name: opencv
     build:
+      {% if cuda_enabled %}
+      string: headless_cuda{{ cuda_version|replace('.', '') }}_py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [qt_version == "none"]
+      string: qt{{ qt_version }}_cuda{{ cuda_version|replace('.', '') }}_py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [qt_version != "none"]
+      {% else %}
       string: headless_py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [qt_version == "none"]
       string: qt{{ qt_version }}_py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [qt_version != "none"]
+      {% endif %}
     requirements:
       host:
         # Explicitely add a python requirement so that the hash changes between
@@ -198,8 +228,13 @@ outputs:
 
   - name: py-opencv
     build:
+      {% if cuda_enabled %}
+      string: headless_cuda{{ cuda_version|replace('.', '') }}_py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [qt_version == "none"]
+      string: qt{{ qt_version }}_cuda{{ cuda_version|replace('.', '') }}_py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [qt_version != "none"]
+      {% else %}
       string: headless_py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [qt_version == "none"]
       string: qt{{ qt_version }}_py{{ PY_VER_MAJOR }}{{ PY_VER_MINOR }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [qt_version != "none"]
+      {% endif %}
       run_exports:
         # Should we even have this???
         # don't pin the python version so hard.

@@ -1,0 +1,117 @@
+name: Hadron Prefix Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "prefix.dev channel"
+        required: false
+        default: "hadron"
+        type: string
+      build_num:
+        description: "Conda build number override"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  build-and-publish:
+    name: opencv-cuda-linux-64
+    runs-on: ubuntu-24.04
+    timeout-minutes: 720
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve prefix channel
+        id: channel
+        shell: bash
+        env:
+          INPUT_CHANNEL: ${{ github.event.inputs.channel }}
+          VAR_CHANNEL: ${{ vars.PREFIX_CHANNEL }}
+        run: |
+          set -euo pipefail
+          channel="${INPUT_CHANNEL}"
+          if [ -z "${channel}" ]; then
+            channel="${VAR_CHANNEL}"
+          fi
+          if [ -z "${channel}" ]; then
+            channel="hadron"
+          fi
+          echo "channel=${channel}" >> "${GITHUB_OUTPUT}"
+          echo "Publishing to prefix.dev/${channel}"
+
+      - name: Resolve build args
+        id: build_args
+        shell: bash
+        run: |
+          set -euo pipefail
+          args="--no-anaconda-upload --output-folder output --package-format 2 -m recipe/conda_build_config_cuda.yaml -c https://prefix.dev/hadron -c conda-forge"
+          echo "args=${args}" >> "${GITHUB_OUTPUT}"
+
+      - name: Override recipe build number
+        if: ${{ github.event.inputs.build_num != '' }}
+        shell: bash
+        env:
+          INPUT_BUILD_NUM: ${{ github.event.inputs.build_num }}
+        run: |
+          set -euo pipefail
+          if ! [[ "${INPUT_BUILD_NUM}" =~ ^[0-9]+$ ]]; then
+            echo "build_num must be an integer (0, 1, 2, ...)."
+            exit 1
+          fi
+          awk -v n="${INPUT_BUILD_NUM}" '
+            BEGIN { done=0 }
+            /^[[:space:]]*\{% set build = [0-9]+ %\}[[:space:]]*$/ && done==0 {
+              sub(/[0-9]+/, n)
+              done=1
+            }
+            { print }
+            END {
+              if (done==0) {
+                print "Could not find {% set build = N %} in recipe/meta.yaml" > "/dev/stderr"
+                exit 2
+              }
+            }
+          ' recipe/meta.yaml > recipe/meta.yaml.tmp
+          mv recipe/meta.yaml.tmp recipe/meta.yaml
+          grep -n "set build" recipe/meta.yaml
+
+      - name: Setup micromamba
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          init-shell: bash
+          environment-name: build
+          create-args: >-
+            conda-build
+            rattler-build
+
+      - name: Build conda package
+        shell: bash -el {0}
+        run: |
+          set -euo pipefail
+          conda build recipe ${{ steps.build_args.outputs.args }}
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: conda-linux-64-cuda
+          path: output/linux-64/*
+
+      - name: Upload package to prefix.dev
+        shell: bash -el {0}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=(output/linux-64/*.conda output/linux-64/*.tar.bz2)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No packages found in output/linux-64"
+            exit 1
+          fi
+          for pkg in "${files[@]}"; do
+            echo "Uploading ${pkg}"
+            rattler-build upload prefix --skip-existing -c "${{ steps.channel.outputs.channel }}" "${pkg}"
+          done

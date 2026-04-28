@@ -3,6 +3,9 @@ set -ex
 
 V4L="1"
 OPENVINO="1"
+CUDA="0"
+CUBLAS="0"
+COREML="0"
 
 if [[ "${target_platform}" == linux-* ]]; then
     # Looks like there's a bug in Opencv 3.2.0 for building with FFMPEG
@@ -11,10 +14,22 @@ if [[ "${target_platform}" == linux-* ]]; then
     OPENMP="-DWITH_OPENMP=1"
 fi
 
+if [[ "${target_platform}" == "linux-64" && -n "${cuda_version:-}" && "${cuda_version}" != "None" ]]; then
+    CUDA="1"
+    CUBLAS="1"
+    # The GitHub-hosted runner will not have a GPU, so build SASS for common
+    # NVIDIA cards and skip runtime GPU tests in the recipe.
+    CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_ARCH_BIN=75\;86\;89"
+    CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_ARCH_PTX="
+    CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_TOOLKIT_ROOT_DIR=${PREFIX}"
+    CMAKE_ARGS="${CMAKE_ARGS} -DOPENCV_DNN_CUDA=OFF"
+fi
+
 if [[ "${target_platform}" == osx-* ]]; then
     # https://conda-forge.org/docs/maintainer/knowledge_base/#newer-c-features-with-old-sdk
     # Address: error: 'path' is unavailable: introduced in macOS 10.15
     export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
+    COREML="1"
 fi
 
 if [[ "$qt_version" == "5" ]]; then
@@ -109,8 +124,11 @@ cmake -LAH -G "Ninja"                                                     \
     -DBUILD_WEBP=0                                                        \
     -DWITH_WEBP=1                                                         \
     -DWITH_V4L=$V4L                                                       \
-    -DWITH_CUDA=0                                                         \
-    -DWITH_CUBLAS=0                                                       \
+    -DWITH_CUDA=$CUDA                                                     \
+    -DWITH_CUBLAS=$CUBLAS                                                 \
+    -DWITH_CUFFT=$CUDA                                                    \
+    -DWITH_NVCUVID=0                                                      \
+    -DWITH_COREML=$COREML                                                 \
     -DWITH_OPENCL=0                                                       \
     -DWITH_OPENCLAMDFFT=0                                                 \
     -DWITH_OPENCLAMDBLAS=0                                                \
@@ -132,6 +150,17 @@ cmake -LAH -G "Ninja"                                                     \
     -DWITH_QT=$QT                                                         \
     -DWITH_GPHOTO2=0                                                      \
     -DWITH_OBSENSOR=0                                                     \
+    -DBUILD_opencv_cudacodec=0                                            \
+    -DBUILD_opencv_cudev=$CUDA                                            \
+    -DBUILD_opencv_cudaarithm=$CUDA                                       \
+    -DBUILD_opencv_cudabgsegm=$CUDA                                       \
+    -DBUILD_opencv_cudafeatures2d=$CUDA                                   \
+    -DBUILD_opencv_cudafilters=$CUDA                                      \
+    -DBUILD_opencv_cudaimgproc=$CUDA                                      \
+    -DBUILD_opencv_cudaobjdetect=$CUDA                                    \
+    -DBUILD_opencv_cudaoptflow=$CUDA                                      \
+    -DBUILD_opencv_cudastereo=$CUDA                                       \
+    -DBUILD_opencv_cudawarping=$CUDA                                      \
     -DINSTALL_C_EXAMPLES=0                                                \
     -DOPENCV_EXTRA_MODULES_PATH="../opencv_contrib/modules"               \
     -DCMAKE_SKIP_RPATH:bool=ON                                            \
