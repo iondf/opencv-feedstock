@@ -171,6 +171,7 @@ test:
   files:
     - CMakeLists.txt
     - test.cpp
+    - test_cuda_features.cpp
   commands:
     # Verify dynamic libraries on all systems
     {% set win_ver_lib = version|replace(".", "") %}
@@ -207,8 +208,7 @@ test:
     - popd
     {% if cuda_enabled %}
     - test -f $PREFIX/include/opencv4/opencv2/cudafeatures2d.hpp  # [linux]
-    - printf '#include <opencv2/cudafeatures2d.hpp>\nint main(){ auto orb = cv::cuda::ORB::create(); return orb.empty(); }\n' > test_cuda_features.cpp  # [linux]
-    - $CXX -std=c++17 test_cuda_features.cpp ${OPENCV_FLAGS} ${OPENCV_LIBS} -o test_cuda_features  # [linux]
+    - $CXX -std=c++17 $RECIPE_DIR/test_cuda_features.cpp ${OPENCV_FLAGS} ${OPENCV_LIBS} -o test_cuda_features  # [linux]
     - if not exist %PREFIX%\Library\include\opencv2\cudafeatures2d.hpp exit 1  # [win]
     {% endif %}
 
