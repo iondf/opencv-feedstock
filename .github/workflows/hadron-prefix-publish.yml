@@ -104,6 +104,9 @@ jobs:
             echo "MINIFORGE_HOME=C:\\mf" >> "${GITHUB_ENV}"
             echo "EXTRA_CB_OPTIONS=--no-long-test-prefix --prefix-length 80" >> "${GITHUB_ENV}"
             echo "CONDA_ARTIFACT_GLOB=C:\\b\\${{ matrix.target_platform }}\\*" >> "${GITHUB_ENV}"
+          elif [ "${{ matrix.kind }}" = "linux" ]; then
+            echo "CONDA_BLD_PATH=/tmp/cb" >> "${GITHUB_ENV}"
+            echo "CONDA_ARTIFACT_GLOB=build_artifacts/${{ matrix.target_platform }}/*" >> "${GITHUB_ENV}"
           else
             echo "CONDA_BLD_PATH=/tmp/cb" >> "${GITHUB_ENV}"
             echo "CONDA_ARTIFACT_GLOB=/tmp/cb/${{ matrix.target_platform }}/*" >> "${GITHUB_ENV}"
@@ -226,7 +229,7 @@ jobs:
         run: |
           set -euo pipefail
           shopt -s nullglob
-          files=(/tmp/cb/${{ matrix.target_platform }}/*.conda /tmp/cb/${{ matrix.target_platform }}/*.tar.bz2 /c/b/${{ matrix.target_platform }}/*.conda /c/b/${{ matrix.target_platform }}/*.tar.bz2)
+          files=(build_artifacts/${{ matrix.target_platform }}/*.conda build_artifacts/${{ matrix.target_platform }}/*.tar.bz2 /tmp/cb/${{ matrix.target_platform }}/*.conda /tmp/cb/${{ matrix.target_platform }}/*.tar.bz2 /c/b/${{ matrix.target_platform }}/*.conda /c/b/${{ matrix.target_platform }}/*.tar.bz2)
           if [ ${#files[@]} -eq 0 ]; then
             echo "No packages found for ${{ matrix.target_platform }}"
             exit 1
