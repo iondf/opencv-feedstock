@@ -26,8 +26,8 @@ if [[ "${target_platform}" == "linux-64" && -n "${cuda_version:-}" && "${cuda_ve
     # Static cudart pulls glibc linker scripts with absolute /usr/lib64 paths.
     CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_USE_STATIC_CUDA_RUNTIME=OFF"
     CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_CUDA_RUNTIME_LIBRARY=Shared"
-    CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_ARCH_BIN=75\;86\;89"
-    CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_ARCH_PTX="
+    CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_ARCH_BIN=75\;86\;89\;120"
+    CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_ARCH_PTX=120"
     CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_PATH=${PREFIX}"
     CMAKE_ARGS="${CMAKE_ARGS} -DCUDAToolkit_ROOT=${PREFIX}"
     CMAKE_ARGS="${CMAKE_ARGS} -DCUDA_HOST_COMPILER=${CXX}"
