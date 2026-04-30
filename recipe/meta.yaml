@@ -26,7 +26,7 @@
 {% set cuda_version = cuda_version|default("None") %}
 {% set cuda_enabled = cuda_version != "None" %}
 
-{% set build = 7 %}
+{% set build = 8 %}
 
 # Allow the qt version to be easily read from the build number 100's value.
 # This used to be more important when we supported both qt5 and qt6
@@ -209,6 +209,7 @@ test:
     {% if cuda_enabled %}
     - test -f $PREFIX/include/opencv4/opencv2/cudafeatures2d.hpp  # [linux]
     - $CXX -std=c++17 $RECIPE_DIR/test_cuda_features.cpp ${OPENCV_FLAGS} ${OPENCV_LIBS} -o test_cuda_features  # [linux]
+    - ./test_cuda_features  # [linux]
     - if not exist %PREFIX%\Library\include\opencv2\cudafeatures2d.hpp exit 1  # [win]
     {% endif %}
 
